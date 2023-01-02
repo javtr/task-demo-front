@@ -5,12 +5,32 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useForm } from "react-hook-form";
 import Form from 'react-bootstrap/Form';
-
+import {postLogin} from "../../services/axios/axiosService.js"
 
 export default function Login() {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+
+        const userObj = {
+          "usuario": data.email,
+          "clave": data.password,
+        }
+    
+        saveUser(userObj);
+      };
+
+
+      function saveUser(obj) {
+        postLogin(obj)
+        .then((response)=>{
+          console.log(response);
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+      }
+
 
     return (
         <>
