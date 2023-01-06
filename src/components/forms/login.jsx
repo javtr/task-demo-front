@@ -10,6 +10,7 @@ import {postLogin} from "../../services/axios/axiosService.js"
 export default function Login() {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const onSubmit = data => {
 
         const userObj = {
@@ -17,11 +18,11 @@ export default function Login() {
           "clave": data.password,
         }
     
-        saveUser(userObj);
+        loginUser(userObj);
       };
 
 
-      function saveUser(obj) {
+      function loginUser(obj) {
         postLogin(obj)
         .then((response)=>{
           console.log(response);

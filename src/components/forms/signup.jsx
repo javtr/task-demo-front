@@ -27,10 +27,10 @@ export default function Signup() {
   function saveUser(obj) {
     postRegister(obj)
     .then((response)=>{
-      console.log(response);
+      console.log(response.data);
     })
     .catch((error)=>{
-      console.log(error);
+      console.log(error.response.data);
     })
   }
 
